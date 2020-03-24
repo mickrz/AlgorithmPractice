@@ -11,7 +11,7 @@ Name | Description
 1.4 PalindromePermutation | Check if string is a permuation of a palindrome
 1.5 OneAway | Check if string is one away
 1.6 StringCompression | Compress string if possible or return original string
-
+1.9 StringRotation | Checks if strings are just rotated versions of each other
 
 
 If you have any questions or feedback, please feel free to msg me. Thanks!

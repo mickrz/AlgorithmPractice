@@ -3,14 +3,12 @@
 #include <iostream>
 #include <bitset>
 
-using namespace std;
-
 // pg 91, 1.4
 
 // Check if string is a permuation of a palindrome
-bool PalindromePermutation(string input_string)
+bool PalindromePermutation(std::string input_string)
 {
-  bitset<26> bits{0};
+  std::bitset<26> bits{0};
 
   // check if string is empty
   if (input_string.empty()) {
@@ -23,7 +21,7 @@ bool PalindromePermutation(string input_string)
     int index = 0;
     bool test = true;
 
-    // convert char to position in bitset
+    // convert char to position in std::bitset
     if (ch >= 'a' && ch <= 'z') {
       index = ch - 'a';
     }
@@ -51,11 +49,11 @@ bool PalindromePermutation(string input_string)
 }
 
 int main(){
-  vector<string> strings = {"tact coa", "I did not fool you", "Tact Coa", ""};
+  std::vector<std::string> strings = {"tact coa", "I did not fool you", "Tact Coa", ""};
 
-  cout << endl << "Checking if string is a palindrome permutation" << endl;
+  std::cout << std::endl << "Checking if string is a palindrome permutation" << std::endl;
   for (auto phrase : strings) {
-    cout << phrase << string(": ") << boolalpha << PalindromePermutation(phrase) << endl;
+    std::cout << phrase << std::string(": ") << std::boolalpha << PalindromePermutation(phrase) << std::endl;
   }
 
   return 0;
@@ -74,5 +72,5 @@ Time Complexity:
 Since it's all done in a for loop, it takes O(n) time.
 
 Space Complexity:
-No additional space except the bitset and string size, so it uses O(n) space where n is the length of the string.
+No additional space except the std::bitset and string size, so it uses O(n) space where n is the length of the string.
 */

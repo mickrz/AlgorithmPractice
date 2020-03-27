@@ -2,12 +2,10 @@
 #include <vector>
 #include <iostream>
 
-using namespace std;
-
 // pg 91, 1.5
 
 // Check if string is one away
-bool OneAway(string reference_string, string comparison_string)
+bool OneAway(std::string reference_string, std::string comparison_string)
 {
   int ref_size = reference_string.size(), cmp_size = comparison_string.size();
   int ref_index = 0, cmp_index = 0;
@@ -67,12 +65,12 @@ bool OneAway(string reference_string, string comparison_string)
 }
 
 int main(){
-  string reference("pale"); 
-  vector<string> words = {"ple", "pales", "bale", "bae", "pale"};
+  std::string reference("pale"); 
+  std::vector<std::string> words = {"ple", "pales", "bale", "bae", "pale"};
 
-  cout << endl << "Checking if string is one away from master" << endl;
+  std::cout << std::endl << "Checking if string is one away from master" << std::endl;
   for (auto word : words) {
-    cout << word << string(": ") << boolalpha << OneAway(reference, word) << endl;
+    std::cout << word << std::string(": ") << std::boolalpha << OneAway(reference, word) << std::endl;
   }
 
   return 0;

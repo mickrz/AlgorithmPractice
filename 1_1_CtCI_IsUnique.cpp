@@ -3,18 +3,16 @@
 #include <iostream>
 #include <bitset>
 
-using namespace std;
-
 // pg 90, 1.1
 
 // Assume ascii, if using a different set, then add/change here...
 static const uint8_t ASCII_LIMIT = 128;
 
 // Determine if input string has unique characters
-bool IsUnique(const string input_string)
+bool IsUnique(const std::string input_string)
 {
   uint16_t input_length = input_string.length();
-  bitset<128> bits{0};
+  std::bitset<128> bits{0};
 
   // this would imply some character(s) would be duplicate
   if (input_length > ASCII_LIMIT) {
@@ -34,10 +32,10 @@ bool IsUnique(const string input_string)
 }
 
 int main(){
-  vector<string> words = {"Cracking", "the", "coding", "interview", "practice"};
-  cout << endl << "Checking if unique" << endl;
+  std::vector<std::string> words = {"Cracking", "the", "coding", "interview", "practice"};
+  std::cout << std::endl << "Checking if unique" << std::endl;
   for (auto word : words) {
-    cout << word << string(": ") << boolalpha << IsUnique(word) << endl;
+    std::cout << word << std::string(": ") << std::boolalpha << IsUnique(word) << std::endl;
   }
 
   return 0;

@@ -1,8 +1,5 @@
-#include <string>
 #include <vector>
 #include <iostream>
-
-using namespace std;
 
 // pg 90, 1.3
 
@@ -47,32 +44,32 @@ bool Urlify(char* input_string, int len)
 
 int main(){
 
-	cout << endl << "Replace all spaces in a string with '%20'" << endl;
+	std::cout << std::endl << "Replace all spaces in a string with '%20'" << std::endl;
     char in_string1[] = "The sky is blue      ";
-    cout << "Test #1: " << in_string1 << endl;
+    std::cout << "Test #1: " << in_string1 << std::endl;
     if (Urlify(in_string1, 15)) {
-      cout << in_string1 << endl;
+      std::cout << in_string1 << std::endl;
     }
     else {
-      cout << "Invalid string" << endl;
+      std::cout << "Invalid string" << std::endl;
     }
 
     char in_string2[] = "The grass is greener on the other side              ";
-    cout << "Test #2: " << in_string2 << endl;
+    std::cout << "Test #2: " << in_string2 << std::endl;
     if (Urlify(in_string2, 38)) {
-      cout << in_string2 << endl;
+      std::cout << in_string2 << std::endl;
     }
     else {
-      cout << "Invalid string" << endl;
+      std::cout << "Invalid string" << std::endl;
     }
 
     char in_string3[] = "";
-    cout << "Test #3: " << in_string3 << endl;
+    std::cout << "Test #3: " << in_string3 << std::endl;
     if (Urlify(in_string3, 5)) {
-      cout << in_string3 << endl;
+      std::cout << in_string3 << std::endl;
     }
     else {
-      cout << "Invalid string" << endl;
+      std::cout << "Invalid string" << std::endl;
     }
     
 	return 0;

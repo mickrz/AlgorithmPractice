@@ -2,15 +2,13 @@
 #include <vector>
 #include <iostream>
 
-using namespace std;
-
 // pg 90, 1.2
 
 // Assume ascii, if using a different set, then add/change here...
 static const uint8_t ASCII_LIMIT = 128;
 
 // Determine if input strings are permuations of each other
-bool CheckPermutation(const string input_string1, const string input_string2)
+bool CheckPermutation(const std::string input_string1, const std::string input_string2)
 {
   uint16_t input_length1 = input_string1.length();
   uint16_t input_length2 = input_string2.length();
@@ -39,21 +37,21 @@ bool CheckPermutation(const string input_string1, const string input_string2)
 
 int main(){
 
-  vector<string> words = {"Cracking", "ckCarnig", "coding"};
-  cout << endl << "Checking if permutations of each other" << endl;
+  std::vector<std::string> words = {"Cracking", "ckCarnig", "coding"};
+  std::cout << std::endl << "Checking if permutations of each other" << std::endl;
 
   if (CheckPermutation(words[0], words[1])) {
-    cout << words[0] << string(" and ") << words[1] << " are permuations of each other" << endl;
+    std::cout << words[0] << std::string(" and ") << words[1] << " are permuations of each other" << std::endl;
   }
   else {
-    cout << words[0] << string(" and ") << words[1] << " are not permuations of each other" << endl;
+    std::cout << words[0] << std::string(" and ") << words[1] << " are not permuations of each other" << std::endl;
   }
 
   if (CheckPermutation(words[2], words[1])) {
-    cout << words[2] << string(" and ") << words[1] << " are permuations of each other" << endl;
+    std::cout << words[2] << std::string(" and ") << words[1] << " are permuations of each other" << std::endl;
   }
   else {
-    cout << words[2] << string(" and ") << words[1] << " are not permuations of each other" << endl;
+    std::cout << words[2] << std::string(" and ") << words[1] << " are not permuations of each other" << std::endl;
   }
   return 0;
 }

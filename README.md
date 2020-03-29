@@ -14,7 +14,8 @@ Name | Description
 1.9 StringRotation | Checks if strings are just rotated versions of each other
 
 
-Data structure implementations
+Data structure implementations | filename
+--- | ---
 Double Linked List | DoublyLinkedList.cpp
 
 If you have any questions or feedback, please feel free to msg me. Thanks!

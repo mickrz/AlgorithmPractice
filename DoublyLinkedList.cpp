@@ -25,6 +25,7 @@ SOFTWARE.
 #include <iostream>
 #include <random>
 #include <sstream>
+#include <bitset>
 
 /* Technically this is a double node because it has tracks previous node */
 class Node
@@ -80,22 +81,36 @@ class LinkedList
         SetTailPtr(node);
     }
 
-    /* Deletes head node */
+    /* Deletes any node */
     void Delete(Node* node) {
         length--;
         Node* prevNode = node->GetPrevNodePtr();
         Node* nextNode = node->GetNextNodePtr();
-        SetHeadPtr(nextNode);
-        
+
         if (nextNode != nullptr) {
-          Node* tmp = nextNode->GetPrevNodePtr();
+          Node* tmp = prevNode;
           if (prevNode != nullptr) {
-            nextNode->SetPrevNodePtr(prevNode->GetNextNodePtr());
-            prevNode->SetNextNodePtr(tmp);
+            prevNode->SetNextNodePtr(nextNode);
+            nextNode->SetPrevNodePtr(tmp);
+          }
+          else {
+              SetHeadPtr(nextNode);
+              if (nextNode != nullptr) {
+                nextNode->SetPrevNodePtr(nullptr);
+                std::cout << "New head node: " << std::to_string(nextNode->GetCurrentData()) << std::endl;
+              }
           }
         }
-        Dump();
+        else {
+          SetTailPtr(prevNode);
+          if (prevNode != nullptr) {
+            prevNode->SetNextNodePtr(nullptr);
+            std::cout << "New tail node: " << std::to_string(prevNode->GetCurrentData()) << std::endl;
+          }
+        }
+
         delete node;
+        Dump();
     }
 
     /* Dumps node values of list */
@@ -106,11 +121,14 @@ class LinkedList
            also works printing node in reverse order of course. */
         Node* node = GetHeadPtr();
         while (node != nullptr) {
-            list_data << std::to_string(node->GetCurrentData());
             node = node->GetNextNodePtr();
             if (node != nullptr) {
-              list_data << " -> ";
+              list_data << std::to_string(node->GetCurrentData());
+              if (GetListLength() > 1) {
+                list_data << " <-> ";
+              }
             }
+
         }
         std::cout << list_data.str() << std::endl;
     }
@@ -133,7 +151,7 @@ LinkedList* InitializeList()
   // Reference: https://en.cppreference.com/w/cpp/numeric/random/uniform_int_distribution
   std::random_device rd;  //Will be used to obtain a seed for the random number engine
   std::mt19937 gen(rd()); //Standard mersenne_twister_engine seeded with rd()
-  std::uniform_int_distribution<> dis(1, 10);
+  std::uniform_int_distribution<> dis(1, 5);
   
   LinkedList* list = new LinkedList();
   int random_num = 0;
@@ -153,9 +171,26 @@ LinkedList* InitializeList()
   return list;
 }
 
-void RemoveDups(LinkedList* list)
+LinkedList* RemoveDups(LinkedList* list)
 {
   std::cout << "2.1: Remove Dups:" << std::endl;
+  std::bitset<10> bits{0};
+  Node* node = list->GetHeadPtr();
+  while (node != nullptr) {
+    int val = node->GetCurrentData();
+    Node* nextNode = node->GetNextNodePtr();
+    if (!bits.test(val-1)) {
+        bits.set(val-1);
+        list->Dump();
+    }
+    else {
+        std::cout << "Delete " << std::to_string(val) << std::endl;
+        list->Delete(node);
+    }
+    node = nextNode;
+  }
+  list->Dump();
+  return list;
 }
 
 void ReturnKthElement(LinkedList* list)
@@ -198,9 +233,16 @@ void Cleanup(LinkedList* list)
     std::cout << "Cleaning up memory..." << std::endl;
     list->Dump();
     Node* node = list->GetHeadPtr();
+    Node* nextNode = nullptr;
+    
     while (node != nullptr) {
+        nextNode = node->GetNextNodePtr();
+        if (nextNode == nullptr) {
+          std::cout << "no more" << std::endl;
+        }
         list->Delete(node);
-        node = list->GetHeadPtr();
+        node = nextNode;
+        //node = list->GetHeadPtr();
     }
     delete list;
     std::cout << "Completed!" << std::endl;
@@ -212,11 +254,16 @@ int main()
   std::cout << "=================================================" << std::endl;
   std::cout << "test run started..." << std::endl; 
   LinkedList* list_one = InitializeList();
-  Cleanup(list_one);
   std::cout << "test run complete...\n" << std::endl; 
 
   std::cout << "=================================================" << std::endl;
-  RemoveDups(list_one);
+  LinkedList* modifiedList =  RemoveDups(list_one);
+  if (modifiedList != nullptr) {
+      Cleanup(modifiedList);
+  }
+  else {
+      std::cout << "list is empty!" << std::endl;
+  }
   std::cout << "=================================================" << std::endl;
   ReturnKthElement(list_one);
   std::cout << "=================================================" << std::endl;

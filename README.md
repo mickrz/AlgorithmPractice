@@ -17,5 +17,6 @@ Name | Description
 Data structure implementations | filename
 --- | ---
 Double Linked List | DoublyLinkedList.cpp
+Stack | Stack.cpp
 
 If you have any questions or feedback, please feel free to msg me. Thanks!

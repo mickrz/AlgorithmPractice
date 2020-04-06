@@ -23,7 +23,7 @@ SOFTWARE.
 */
 
 // Remove any nodes with a repeated value
-LinkedList* RemoveDups(LinkedList* list)
+void RemoveDups(LinkedList* list)
 {
   std::cout << "2.1: Remove Dups:" << std::endl;
   std::bitset<10> bits{0};
@@ -42,7 +42,6 @@ LinkedList* RemoveDups(LinkedList* list)
     node = nextNode;
   }
   list->Dump();
-  return list;
 }
 
 

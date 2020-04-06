@@ -67,8 +67,8 @@ class LinkedList
        appends to head node */
     void Append(int input_data) {
         Node* node = new Node(input_data);
-        length++;
         Dump();
+        length++;
         
         if (head == nullptr) {
             head = node;
@@ -87,25 +87,27 @@ class LinkedList
         Node* prevNode = node->GetPrevNodePtr();
         Node* nextNode = node->GetNextNodePtr();
 
+
         if (nextNode != nullptr) {
-          Node* tmp = prevNode;
+          Node* tmp = nextNode;
           if (prevNode != nullptr) {
-            prevNode->SetNextNodePtr(nextNode);
-            nextNode->SetPrevNodePtr(tmp);
+            nextNode->SetPrevNodePtr(prevNode);
+            prevNode->SetNextNodePtr(tmp);
           }
           else {
-              SetHeadPtr(nextNode);
-              if (nextNode != nullptr) {
-                nextNode->SetPrevNodePtr(nullptr);
-                std::cout << "New head node: " << std::to_string(nextNode->GetCurrentData()) << std::endl;
-              }
+            SetHeadPtr(nextNode);
+            if (nextNode != nullptr) {
+              nextNode->SetPrevNodePtr(nullptr);
+            }
           }
         }
-        else {
+        else { // nextnode = nullptr
           SetTailPtr(prevNode);
           if (prevNode != nullptr) {
             prevNode->SetNextNodePtr(nullptr);
-            std::cout << "New tail node: " << std::to_string(prevNode->GetCurrentData()) << std::endl;
+          }
+          else {
+            SetHeadPtr(nullptr);
           }
         }
 
@@ -121,14 +123,13 @@ class LinkedList
            also works printing node in reverse order of course. */
         Node* node = GetHeadPtr();
         while (node != nullptr) {
+            if (node != nullptr) {
+                list_data << std::to_string(node->GetCurrentData());
+            }
             node = node->GetNextNodePtr();
             if (node != nullptr) {
-              list_data << std::to_string(node->GetCurrentData());
-              if (GetListLength() > 1) {
-                list_data << " <-> ";
-              }
+              list_data << " <-> ";
             }
-
         }
         std::cout << list_data.str() << std::endl;
     }
@@ -149,6 +150,7 @@ class LinkedList
 LinkedList* InitializeList()
 {
   // Reference: https://en.cppreference.com/w/cpp/numeric/random/uniform_int_distribution
+  // Code to generate random values for nodes from 1 to 5.
   std::random_device rd;  //Will be used to obtain a seed for the random number engine
   std::mt19937 gen(rd()); //Standard mersenne_twister_engine seeded with rd()
   std::uniform_int_distribution<> dis(1, 5);
@@ -168,28 +170,6 @@ LinkedList* InitializeList()
   }
   std::cout << list_data.str() << "\nlist has " << list->GetListLength()\
             << " element(s)" <<  std::endl;
-  return list;
-}
-
-LinkedList* RemoveDups(LinkedList* list)
-{
-  std::cout << "2.1: Remove Dups:" << std::endl;
-  std::bitset<10> bits{0};
-  Node* node = list->GetHeadPtr();
-  while (node != nullptr) {
-    int val = node->GetCurrentData();
-    Node* nextNode = node->GetNextNodePtr();
-    if (!bits.test(val-1)) {
-        bits.set(val-1);
-        list->Dump();
-    }
-    else {
-        std::cout << "Delete " << std::to_string(val) << std::endl;
-        list->Delete(node);
-    }
-    node = nextNode;
-  }
-  list->Dump();
   return list;
 }
 
@@ -233,17 +213,11 @@ void Cleanup(LinkedList* list)
     std::cout << "Cleaning up memory..." << std::endl;
     list->Dump();
     Node* node = list->GetHeadPtr();
-    Node* nextNode = nullptr;
-    
     while (node != nullptr) {
-        nextNode = node->GetNextNodePtr();
-        if (nextNode == nullptr) {
-          std::cout << "no more" << std::endl;
-        }
-        list->Delete(node);
-        node = nextNode;
-        //node = list->GetHeadPtr();
-    }
+      Node* nextNode = node->GetNextNodePtr();
+      list->Delete(node);
+      node = nextNode;
+    }    
     delete list;
     std::cout << "Completed!" << std::endl;
 }
@@ -255,15 +229,6 @@ int main()
   std::cout << "test run started..." << std::endl; 
   LinkedList* list_one = InitializeList();
   std::cout << "test run complete...\n" << std::endl; 
-
-  std::cout << "=================================================" << std::endl;
-  LinkedList* modifiedList =  RemoveDups(list_one);
-  if (modifiedList != nullptr) {
-      Cleanup(modifiedList);
-  }
-  else {
-      std::cout << "list is empty!" << std::endl;
-  }
   std::cout << "=================================================" << std::endl;
   ReturnKthElement(list_one);
   std::cout << "=================================================" << std::endl;
@@ -285,35 +250,35 @@ int main()
 /*
 Simple test of implementation:
 
-$g++ -o main *.cpp
-$main
 Hello linked list problems!
 =================================================
 test run started...
 Initializing linked list:
 
-2
-2 -> 4
-2 -> 4 -> 4
-2 -> 4 -> 4 -> 6
-2 -> 4 -> 4 -> 6 -> 5
-2 -> 4 -> 4 -> 6 -> 5 -> 6
-2 -> 4 -> 4 -> 6 -> 5 -> 6 -> 9
-2 -> 4 -> 4 -> 6 -> 5 -> 6 -> 9 -> 2
-2 -> 4 -> 4 -> 6 -> 5 -> 6 -> 9 -> 2 -> 8
-2 -> 4 -> 4 -> 6 -> 5 -> 6 -> 9 -> 2 -> 8 -> 5
-list has 10 element(s)
-Cleaning up memory...
-2 -> 4 -> 4 -> 6 -> 5 -> 6 -> 9 -> 2 -> 8 -> 5
-4 -> 4 -> 6 -> 5 -> 6 -> 9 -> 2 -> 8 -> 5
-4 -> 6 -> 5 -> 6 -> 9 -> 2 -> 8 -> 5
-6 -> 5 -> 6 -> 9 -> 2 -> 8 -> 5
-5 -> 6 -> 9 -> 2 -> 8 -> 5
-6 -> 9 -> 2 -> 8 -> 5
-9 -> 2 -> 8 -> 5
-2 -> 8 -> 5
-8 -> 5
-5
+4                                                                                                                                                                                  
+4 <-> 4                                                                                                                                                                            
+4 <-> 4 <-> 1                                                                                                                                                                      
+4 <-> 4 <-> 1 <-> 4                                                                                                                                                                
+4 <-> 4 <-> 1 <-> 4 <-> 4                                                                                                                                                          
+4 <-> 4 <-> 1 <-> 4 <-> 4 <-> 4                                                                                                                                                    
+4 <-> 4 <-> 1 <-> 4 <-> 4 <-> 4 <-> 2                                                                                                                                              
+4 <-> 4 <-> 1 <-> 4 <-> 4 <-> 4 <-> 2 <-> 3                                                                                                                                        
+4 <-> 4 <-> 1 <-> 4 <-> 4 <-> 4 <-> 2 <-> 3 <-> 3                                                                                                                                  
+4 <-> 4 <-> 1 <-> 4 <-> 4 <-> 4 <-> 2 <-> 3 <-> 3 <-> 1 
+list has 10 element(s)                                                                                                                                                             
+
+=================================================                                                                                                                                  
+Cleaning up memory...                                                                                                                                                              
+4 <-> 4 <-> 1 <-> 4 <-> 4 <-> 4 <-> 2 <-> 3 <-> 3 <-> 1                                                                                                                            
+4 <-> 1 <-> 4 <-> 4 <-> 4 <-> 2 <-> 3 <-> 3 <-> 1                                                                                                                                  
+1 <-> 4 <-> 4 <-> 4 <-> 2 <-> 3 <-> 3 <-> 1                                                                                                                                        
+4 <-> 4 <-> 4 <-> 2 <-> 3 <-> 3 <-> 1                                                                                                                                              
+4 <-> 4 <-> 2 <-> 3 <-> 3 <-> 1                                                                                                                                                    
+4 <-> 2 <-> 3 <-> 3 <-> 1                                                                                                                                                          
+2 <-> 3 <-> 3 <-> 1                                                                                                                                                                
+3 <-> 3 <-> 1                                                                                                                                                                      
+3 <-> 1                                                                                                                                                                            
+1
 
 Completed!
 test run complete...

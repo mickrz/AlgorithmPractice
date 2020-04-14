@@ -14,9 +14,13 @@ Name | Description
 1.9 StringRotation | Checks if strings are just rotated versions of each other
 2.1 RemoveDups | Remove any nodes with a repeated value
 
+
+The following data structures are meant to be self-contained. I could have broken it out having Node in it's own class of course. One thing I intend to do after a few more is to use C++ templates to use any data type.
 Data structure implementations | filename
 --- | ---
 Double Linked List | DoublyLinkedList.cpp
 Stack | Stack.cpp
+Queue | Queue.cpp
+
 
 If you have any questions or feedback, please feel free to msg me. Thanks!

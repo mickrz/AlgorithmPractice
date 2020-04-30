@@ -1,8 +1,29 @@
-# Cracking the Coding Interview, 6th edition
+# General Data Structure and Algorithm "Stuff"
 
-## My practice solutions
+## My practice implementations
+I started out doing a handful of problems, but I thought it was more interesting creating my own implementations of the classic data structures and algorithms.
 
 
+The following data structures are meant to be self-contained. I could have broken it out having Node in it's own class of course. At one point, I intend to use C++ templates to use any data type.
+
+Data Structure | Description | filename
+--- | --- | ---
+Double Linked List | as advertised | DoublyLinkedList.cpp
+Stack | as advertised | Stack.cpp
+Queue | as advertised | Queue.cpp
+Tree | Using tree and node classes, some viewpoints is it rarely makes a difference, but coding it up this way I thought made it more managable. Tree class contains min/max/height/number of nodes, leafs. Includes pre-order/in-order/post-order & BFS recursively | Tree.cpp
+Graph | - | -
+Trie | -  | -
+Hash Table | -
+
+Algorithm | filename
+--- | ---
+Merge Sort | -
+Quick Sort | -
+
+
+
+## My practice solutions for "Cracking the Coding Interview", 6th ed.
 Name | Description
 --- | ---
 1.1 IsUnique | Determine if input string has unique characters
@@ -15,12 +36,6 @@ Name | Description
 2.1 RemoveDups | Remove any nodes with a repeated value
 
 
-The following data structures are meant to be self-contained. I could have broken it out having Node in it's own class of course. One thing I intend to do after a few more is to use C++ templates to use any data type.
-Data structure implementations | filename
---- | ---
-Double Linked List | DoublyLinkedList.cpp
-Stack | Stack.cpp
-Queue | Queue.cpp
 
 
 If you have any questions or feedback, please feel free to msg me. Thanks!

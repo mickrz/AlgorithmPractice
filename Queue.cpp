@@ -30,16 +30,16 @@ SOFTWARE.
 class Node
 {
   public:
-Node(int input_data) { 
-  data = input_data;
-  next = nullptr;
-}
-virtual ~Node() = default;
+    Node(int input_data) {
+      data = input_data;
+      next = nullptr;
+    }
+    virtual ~Node() = default;
 
-/* I always spell these out because it's easier for me to follow. */
-int GetData() { return data; }
-void SetNextNodePtr(Node* node) { next = node; }
-Node* GetNextNodePtr() { return next; }
+    /* I always spell these out because it's easier for me to follow. */
+    int GetData() { return data; }
+    void SetNextNodePtr(Node* node) { next = node; }
+    Node* GetNextNodePtr() { return next; }
 
   private:
     int data;
@@ -50,56 +50,56 @@ Node* GetNextNodePtr() { return next; }
 class Queue
 {
   public:
-Queue() {
-  SetFirstPtr(nullptr);
-  SetLastPtr(nullptr);
-}
-virtual ~Queue() = default;
+    Queue() {
+      SetFirstPtr(nullptr);
+      SetLastPtr(nullptr);
+    }
+    virtual ~Queue() = default;
 
-/* basic queue methods;
-Pushes next node onto queue */
-void Add(int input_data) {
-  Node* node = new Node(input_data);
-  if (GetFirstPtr() != nullptr) {
-    GetLastPtr()->SetNextNodePtr(node);
-  }
-  SetLastPtr(node);
-  if (GetFirstPtr() == nullptr) {
-    SetFirstPtr(GetLastPtr());
-  }
-}
+    /* basic queue methods;
+    Pushes next node onto queue */
+    void Add(int input_data) {
+      Node* node = new Node(input_data);
+      if (GetFirstPtr() != nullptr) {
+        GetLastPtr()->SetNextNodePtr(node);
+      }
+      SetLastPtr(node);
+      if (GetFirstPtr() == nullptr) {
+        SetFirstPtr(GetLastPtr());
+      }
+    }
 
-/* Pops first node */
-int Remove() {
-  if (GetFirstPtr() != nullptr) {
-    int data = GetFirstPtr()->GetData();
-    SetFirstPtr(GetFirstPtr()->GetNextNodePtr());
-     if (GetFirstPtr() == nullptr) {
-       SetLastPtr(nullptr);
-     }
-     return data;
-  }
-  return -1;
-}
+    /* Pops first node */
+    int Remove() {
+      if (GetFirstPtr() != nullptr) {
+        int data = GetFirstPtr()->GetData();
+        SetFirstPtr(GetFirstPtr()->GetNextNodePtr());
+         if (GetFirstPtr() == nullptr) {
+           SetLastPtr(nullptr);
+         }
+         return data;
+      }
+      return -1;
+    }
 
-/* Returns first value */
-int Peek() {
-  return (GetFirstPtr() != nullptr) ? GetFirstPtr()->GetData() : -1;
-}
+    /* Returns first value */
+    int Peek() {
+      return (GetFirstPtr() != nullptr) ? GetFirstPtr()->GetData() : -1;
+    }
 
-bool IsEmpty() {
-  return GetFirstPtr() == nullptr;
-}
+    bool IsEmpty() {
+      return GetFirstPtr() == nullptr;
+    }
 
-/* I always spell these out because it's easier for me to follow. */
-Node* GetFirstPtr() { return first; }
-void SetFirstPtr(Node* node) { first = node; }
-Node* GetLastPtr() { return last; }
-void SetLastPtr(Node* node) { last = node; }
+    /* I always spell these out because it's easier for me to follow. */
+    Node* GetFirstPtr() { return first; }
+    void SetFirstPtr(Node* node) { first = node; }
+    Node* GetLastPtr() { return last; }
+    void SetLastPtr(Node* node) { last = node; }
 
-  private:
-Node* first;
-Node* last;
+    private:
+      Node* first;
+      Node* last;
 };
 
 Queue* InitializeQueue(int size)

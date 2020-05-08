@@ -4,7 +4,7 @@
 I started out doing a handful of problems, but I thought it was more interesting creating my own implementations of the classic data structures and algorithms.
 
 
-The following data structures are meant to be self-contained. I could have broken it out having Node in it's own class of course. At one point, I intend to use C++ templates to use any data type.
+The following data structures are meant to be self-contained. At some point, I intend to use C++ templates to use any data type.
 
 Data Structure | Description | filename
 --- | --- | ---
@@ -12,9 +12,11 @@ Double Linked List | as advertised | DoublyLinkedList.cpp
 Stack | as advertised | Stack.cpp
 Queue | as advertised | Queue.cpp
 Tree | Using tree and node classes, some viewpoints is it rarely makes a difference, but coding it up this way I thought made it more managable. Tree class contains min/max/height/number of nodes, leafs. Includes pre-order/in-order/post-order & BFS recursively | Tree.cpp
-Graph | - | -
+Binary Search Tree | as advertised | BinarySearchTree.cpp
 Trie | -  | -
-Hash Table | -
+Binary Heap | - | -
+Hash Table | - | -
+Graph | - | -
 
 Algorithm | filename
 --- | ---

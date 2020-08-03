@@ -6,12 +6,13 @@ I started out doing a handful of problems, but I thought it was more interesting
 
 The following data structures are meant to be self-contained. At some point, I intend to use C++ templates to use any data type.
 
-Data Structure | Description | filename
+Data Structure | Description | filename/directory
 --- | --- | ---
-Double Linked List | as advertised | DoublyLinkedList.cpp
+Double Linked List | as advertised | LinkedList
+Skip List | - | -
 Stack | as advertised | Stack.cpp
 Queue | as advertised | Queue.cpp
-Tree | Using tree and node classes, some viewpoints is it rarely makes a difference, but coding it up this way I thought made it more managable. Tree class contains min/max/height/number of nodes, leafs. Includes pre-order/in-order/post-order & BFS recursively | Tree.cpp
+Tree | Using tree and node classes, some viewpoints is it rarely makes a difference, but coding it up this way I thought made it more manageable. Tree class contains min/max/height/number of nodes, leafs. Includes pre-order/in-order/post-order & BFS recursively | Tree.cpp
 Binary Search Tree | as advertised | BinarySearchTree.cpp
 Trie | -  | -
 Binary Heap | - | -

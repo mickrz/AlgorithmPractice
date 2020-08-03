@@ -50,37 +50,37 @@ LinkedList* InitializeList()
   return list;
 }
 
-void ReturnKthElement(LinkedList* list)
+void ReturnKthElement(LinkedList* /*list*/)
 {
   std::cout << "2.2: Return Kth to Last:" << std::endl;
 }
 
-void DeleteMiddleNode(LinkedList* list)
+void DeleteMiddleNode(LinkedList* /*list*/)
 {
   std::cout << "2.3: Delete Middle Node:" << std::endl;
 }
 
-void Partition(LinkedList* list)
+void Partition(LinkedList* /*list*/)
 {
   std::cout << "2.4: Parition:" << std::endl;
 }
 
-void SumLists(LinkedList* list)
+void SumLists(LinkedList* /*list*/)
 {
   std::cout << "2.5: Sum Lists:" << std::endl;
 }
 
-void Palindrome(LinkedList* list)
+void Palindrome(LinkedList* /*list*/)
 {
   std::cout << "2.6: Palindrome:" << std::endl;
 }
 
-void Intersection(LinkedList* list)
+void Intersection(LinkedList* /*list*/)
 {
   std::cout << "2.7: Intersection:" << std::endl;
 }
 
-void LoopDetection(LinkedList* list)
+void LoopDetection(LinkedList* /*list*/)
 {
   std::cout << "2.8: Loop Detection:" << std::endl;
 }
@@ -122,6 +122,7 @@ int main()
   std::cout << "=================================================" << std::endl;
   LoopDetection(list_one);
   std::cout << "=================================================" << std::endl;
+  Cleanup(list_one);
   return 0;
 }
 

@@ -34,11 +34,12 @@ int main()
     tree->InsertNode(root, i);
   }
 
-  //       1
-  //     /   \
-  //    2     3
-  //   / \   / \
-  //  4   5 6   7
+  /*       1
+         /   \
+        2     3
+       / \   / \
+      4   5 6   7
+  */
   std::cout << "\n       1"
             << "\n     /   \\"
             << "\n    2     3"
@@ -64,11 +65,12 @@ int main()
   std::cout << "\nDelete a node and print new tree layout" << std::endl;
   tree->DeleteNode(root, 3);
   
-  //       1
-  //     /   \
-  //    2     7
-  //   / \   / \
-  //  4   5 6  - 
+  /*       1
+         /   \
+        2     7
+       / \   / \
+      4   5 6  -
+  */      
   std::cout << "\n       1"
             << "\n     /   \\"
             << "\n    2     7"
@@ -88,11 +90,12 @@ int main()
   std::cout << "\nInsert a new mode to bring it back to its former glory..." << std::endl;
   tree->InsertNode(root, 8);
 
-  //       1
-  //     /   \
-  //    2     7
-  //   / \   / \
-  //  4   5 6   8 
+  /*       1
+         /   \
+        2     7
+       / \   / \
+      4   5 6   8
+  */      
   std::cout << "\n       1"
             << "\n     /   \\"
             << "\n    2     7"

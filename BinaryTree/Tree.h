@@ -34,6 +34,7 @@ class Tree
     virtual ~Tree() = default;
     Node* CreateNode(int input_data);
     
+    void InsertNode(Node* root, int input_data);
     // BFS
     Node* SearchNode(Node* root, int data);
     

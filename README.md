@@ -10,7 +10,7 @@ Data Structure | Description | filename/directory
 --- | --- | ---
 Double Linked List | as advertised | LinkedList
 Skip List | - | -
-Stack | as advertised | Stack.cpp
+Stack | as advertised | Stack
 Queue | as advertised | Queue
 Tree | Using tree and node classes, some viewpoints is it rarely makes a difference, but coding it up this way I thought made it more manageable. Tree class contains min/max/height/number of nodes, leafs. Includes pre-order/in-order/post-order & BFS recursively | Tree
 Binary Search Tree | as advertised | BinarySearchTree.cpp

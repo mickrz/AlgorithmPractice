@@ -22,72 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-#include <iostream>
-#include <random>
-#include <sstream>
-
-/* stack node */
-class Node
-{
-  public:
-    Node(int input_data) { 
-        data = input_data;
-        next = nullptr;
-    }
-    virtual ~Node() = default;
-    
-    /* I always spell these out because it's easier for me to follow. */
-    int GetData() { return data; }
-    void SetNextNodePtr(Node* node) { next = node; }
-    Node* GetNextNodePtr() { return next; }
-    
-  private:
-    int data;
-    Node* next;
-};
-
-/* stack class */
-class Stack
-{
-  public:
-    Stack() {
-      SetTopPtr(nullptr);
-    }
-    virtual ~Stack() = default;
-
-    /* basic stack methods;
-       Pushes next node onto stack */
-    void Push(int input_data) {
-      Node* node = new Node(input_data);
-      node->SetNextNodePtr(GetTopPtr());    
-      SetTopPtr(node);
-    }
-
-    /* Pops next node */
-    int Pop() {
-      int value = GetTopPtr()->GetData();
-      Node* newTop = GetTopPtr()->GetNextNodePtr();
-      delete GetTopPtr();
-      SetTopPtr(newTop);
-      return value;
-    }
-
-    /* Returns top value */
-    int Peek() {
-      return (GetTopPtr() != nullptr) ? GetTopPtr()->GetData() : -1;
-    }
-    
-    bool IsEmpty() {
-      return GetTopPtr() == nullptr;
-    }
-
-    /* I always spell these out because it's easier for me to follow. */
-    Node* GetTopPtr() { return top; }
-    void SetTopPtr(Node* node) { top = node; }
-
-  private:    
-    Node* top;
-};
+#include "Stack.h"
 
 Stack* InitializeStack(int size)
 {

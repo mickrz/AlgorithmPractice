@@ -24,7 +24,7 @@ SOFTWARE.
 
 #pragma once
 
-#include "Stack.h"
+#include "Node.h"
 
 /* stack class */
 class Stack

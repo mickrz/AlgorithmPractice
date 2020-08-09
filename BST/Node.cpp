@@ -31,8 +31,6 @@ Node::Node(int input_data)
   right = nullptr;
 }
 
-Node::~Node() = default;
-
 /* I always spell these out because it's easier for me to follow. */
 int Node::GetData()
 {

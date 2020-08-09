@@ -1,5 +1,4 @@
 /*
-/*
 MIT License
 
 Copyright (c) 2020 Mike Rzucidlo
@@ -32,6 +31,7 @@ class BinarySearchTree
     BinarySearchTree();
     virtual ~BinarySearchTree() = default;
 
+    Node* CreateNode(int input_data);
     Node* InsertNode(Node* node, int input_data);
     Node* SearchNode(Node* node, int input_data);
     Node* GetMinValue(Node* node);
@@ -41,7 +41,5 @@ class BinarySearchTree
     
   private:
     Node* root;
-    Node* CreateNode(int input_data);
-
 };
 

@@ -1,5 +1,4 @@
 /*
-/*
 MIT License
 
 Copyright (c) 2020 Mike Rzucidlo
@@ -29,7 +28,7 @@ SOFTWARE.
 BinarySearchTree::BinarySearchTree()
 {
   root = nullptr;
-};
+}
 
 Node* BinarySearchTree::InsertNode(Node* node, int input_data) {
   if (node == nullptr) {
@@ -54,6 +53,7 @@ Node* BinarySearchTree::SearchNode(Node* node, int input_data) {
   else if (input_data > node->GetData()) {
     return SearchNode(node->GetRightNodePtr(), input_data);
   }
+  return nullptr;
 }
 
 Node* BinarySearchTree::GetMinValue(Node* node) {
@@ -110,7 +110,7 @@ void BinarySearchTree::DFT_InOrder(Node* root)
   DFT_InOrder(root->GetRightNodePtr());
 }
 
-Node* CreateNode(int input_data)
+Node* BinarySearchTree::CreateNode(int input_data)
 {
   return new Node(input_data);
 }

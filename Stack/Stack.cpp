@@ -35,7 +35,7 @@ void Stack::Push(int input_data) {
   NodeTypes::NextNode* node = new NodeTypes::NextNode(input_data);
   node->SetNextNodePtr(GetTopPtr());
   SetTopPtr(node);
-  std::cout << *this << std::endl;
+  std::cout << top << std::endl;
 }
 
 /* Pops next node */
@@ -44,7 +44,7 @@ int Stack::Pop() {
   NodeTypes::NextNode* newTop = GetTopPtr()->GetNextNodePtr();
   delete GetTopPtr();
   SetTopPtr(newTop);
-  std::cout << *this << std::endl;
+  std::cout << top << std::endl;
   return value;
 }
 

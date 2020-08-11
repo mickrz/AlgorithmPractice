@@ -47,9 +47,9 @@ class Stack
     bool IsEmpty();
 
   private:    
-    NextNode* top;
+    NodeTypes::NextNode* top;
     
     /* I always spell these out because it's easier for me to follow. */
-    NextNode* GetTopPtr();
-    void SetTopPtr(NextNode* node);
+    NodeTypes::NextNode* GetTopPtr();
+    void SetTopPtr(NodeTypes::NextNode* node);
 };

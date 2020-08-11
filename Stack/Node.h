@@ -33,19 +33,19 @@ namespace NodeTypes {
   class NextNode
   {
     public:
-      Node(int input_data);
-      virtual ~Node() = default;
+      NextNode(int input_data);
+      virtual ~NextNode() = default;
       
       /* I always spell these out because it's easier for me to follow. */
       int GetData();
-      void SetNextNodePtr(Node* node);
-      Node* GetNextNodePtr();
+      void SetNextNodePtr(NextNode* node);
+      NextNode* GetNextNodePtr();
       
       // An overloaded operator<<, allowing us to print the node via `cout<<`:
-      friend std::ostream& operator<<(std::ostream & os, const NextNode & node);
+      friend std::ostream& operator<<(std::ostream& os, NextNode* node);
       
     private:
       int data;
-      Node* next;
+      NextNode* next;
   };
 }

@@ -38,7 +38,7 @@ namespace NodeTypes {
     return data;
   }
 
-  void NextNode::SetNextNodePtr(Node* node)
+  void NextNode::SetNextNodePtr(NextNode* node)
   {
     next = node;
   }
@@ -48,7 +48,7 @@ namespace NodeTypes {
     return next;
   }
   
-  std::ostream& operator<<(std::ostream & os, const NextNode & node)
+  std::ostream& operator<<(std::ostream &os, NextNode *node)
   {
     NextNode* currentNode = node;
     

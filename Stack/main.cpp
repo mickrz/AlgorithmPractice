@@ -39,7 +39,7 @@ Stack* InitializeStack(int size)
   std::cout << "Initializing stack:" << std::endl;
   for (int i = 0; i < size; i++) {
     random_num = dis(gen);
-    stack_data << "Node " << std::to_string(i+1) << " pushed to top of stack " << std::to_string(random_num) << "\n";
+    //stack_data << "Node " << std::to_string(i+1) << " pushed to top of stack " << std::to_string(random_num) << "\n";
     stack->Push(random_num);
   }
   std::cout << stack_data.str() << "\nstack has " <<  std::to_string(size) \
@@ -52,7 +52,7 @@ void Cleanup(Stack* stack)
   std::cout << "Cleaning up memory..." << std::endl;
   std::stringstream stack_data;
   while (!stack->IsEmpty()) {
-    stack_data << "Node popped from top of stack " << std::to_string(stack->Peek()) << "\n";
+    //stack_data << "Node popped from top of stack " << std::to_string(stack->Peek()) << "\n";
     stack->Pop();
   }
   std::cout << stack_data.str() << std::endl;

@@ -39,7 +39,11 @@ int main()
   std::cout << "=================================================" << std::endl;
   std::cout << "Searching if node with key 3 exists" << std::endl;
   Node* searchNode = tree->SearchNode(root, 3);
-  std::cout << "Found!" << std::endl;
+  if (searchNode != nullptr) {
+    std::cout << "Found!" << std::endl;
+  } else {
+    std::cout << "Not Found!" << std::endl;
+  }
   std::cout << "=================================================" << std::endl;
   std::cout << "Delete node with key 1" << std::endl;
   Node* deleteNode = tree->DeleteNode(root, 1);
@@ -49,6 +53,9 @@ int main()
   tree->DFT_InOrder(root);
   std::cout << "Delete node with key 10" << std::endl;
   deleteNode = tree->DeleteNode(root, 10);
+  if (deleteNode == nullptr) {
+    std::cout << "Node not found/not deleted!" << std::endl;
+  }
   tree->DFT_InOrder(root);
   std::cout << "=================================================" << std::endl;
   std::cout << "Searching if node with key 3 exists" << std::endl;

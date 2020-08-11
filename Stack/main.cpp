@@ -37,13 +37,13 @@ Stack* InitializeStack(int size)
   std::stringstream stack_data;
   
   std::cout << "Initializing stack:" << std::endl;
+  std::cout << stack_data.str() << "\nstack has capacity for " << \
+    std::to_string(size) << " element(s)" <<  std::endl;
+
   for (int i = 0; i < size; i++) {
     random_num = dis(gen);
-    //stack_data << "Node " << std::to_string(i+1) << " pushed to top of stack " << std::to_string(random_num) << "\n";
     stack->Push(random_num);
   }
-  std::cout << stack_data.str() << "\nstack has " <<  std::to_string(size) \
-<< " element(s)" <<  std::endl;
   return stack;
 }
 
@@ -52,7 +52,6 @@ void Cleanup(Stack* stack)
   std::cout << "Cleaning up memory..." << std::endl;
   std::stringstream stack_data;
   while (!stack->IsEmpty()) {
-    //stack_data << "Node popped from top of stack " << std::to_string(stack->Peek()) << "\n";
     stack->Pop();
   }
   std::cout << stack_data.str() << std::endl;
@@ -66,7 +65,6 @@ int main()
   std::cout << "=================================================" << std::endl;
   std::cout << "test run started..." << std::endl; 
   Stack* stack_one = InitializeStack(10);
-  std::cout << "=================================================" << std::endl;
   Cleanup(stack_one);
   std::cout << "test run complete...\n" << std::endl; 
   std::cout << "=================================================" << std::endl;
@@ -79,30 +77,28 @@ Hello Stacks!
 =================================================
 test run started...
 Initializing stack:
-Node 1 pushed to top of stack 5
-Node 2 pushed to top of stack 3
-Node 3 pushed to top of stack 1
-Node 4 pushed to top of stack 5
-Node 5 pushed to top of stack 5
-Node 6 pushed to top of stack 5
-Node 7 pushed to top of stack 2
-Node 8 pushed to top of stack 3
-Node 9 pushed to top of stack 2
-Node 10 pushed to top of stack 4     
-stack has 10 element(s)        
-=================================================
-Cleaning up memory...          
-Node popped from top of stack 4
-Node popped from top of stack 2
-Node popped from top of stack 3
-Node popped from top of stack 2
-Node popped from top of stack 5
-Node popped from top of stack 5
-Node popped from top of stack 5
-Node popped from top of stack 1
-Node popped from top of stack 3
-Node popped from top of stack 5
-Completed!   
+4
+1 4
+1 1 4
+5 1 1 4
+2 5 1 1 4
+1 2 5 1 1 4
+1 1 2 5 1 1 4
+2 1 1 2 5 1 1 4
+4 2 1 1 2 5 1 1 4
+4 4 2 1 1 2 5 1 1 4
+4 2 1 1 2 5 1 1 4
+2 1 1 2 5 1 1 4
+1 1 2 5 1 1 4
+1 2 5 1 1 4
+2 5 1 1 4
+5 1 1 4
+1 1 4
+1 4
+4
+
+
+Completed!
 test run complete...
 ================================================= 
 */

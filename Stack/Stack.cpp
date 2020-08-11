@@ -44,7 +44,7 @@ int Stack::Pop() {
   NodeTypes::NextNode* newTop = GetTopPtr()->GetNextNodePtr();
   delete GetTopPtr();
   SetTopPtr(newTop);
-  std::cout << "[Pop] " << top << std::endl;
+  std::cout << "[Pop ] " << top << std::endl;
   return value;
 }
 

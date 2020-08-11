@@ -49,7 +49,6 @@ Stack* InitializeStack(int size)
 
 void Cleanup(Stack* stack)
 {
-  std::cout << "Cleaning up memory..." << std::endl;
   std::stringstream stack_data;
   while (!stack->IsEmpty()) {
     stack->Pop();
@@ -77,28 +76,29 @@ Hello Stacks!
 =================================================
 test run started...
 Initializing stack:
-4
-1 4
-1 1 4
-5 1 1 4
-2 5 1 1 4
-1 2 5 1 1 4
-1 1 2 5 1 1 4
-2 1 1 2 5 1 1 4
-4 2 1 1 2 5 1 1 4
-4 4 2 1 1 2 5 1 1 4
-4 2 1 1 2 5 1 1 4
-2 1 1 2 5 1 1 4
-1 1 2 5 1 1 4
-1 2 5 1 1 4
-2 5 1 1 4
-5 1 1 4
-1 1 4
-1 4
-4
 
+stack has capacity for 10 element(s)
+[Push] 3
+[Push] 2 3
+[Push] 1 2 3
+[Push] 5 1 2 3
+[Push] 1 5 1 2 3
+[Push] 5 1 5 1 2 3
+[Push] 2 5 1 5 1 2 3
+[Push] 5 2 5 1 5 1 2 3
+[Push] 1 5 2 5 1 5 1 2 3
+[Push] 3 1 5 2 5 1 5 1 2 3
+[Pop ] 1 5 2 5 1 5 1 2 3
+[Pop ] 5 2 5 1 5 1 2 3
+[Pop ] 2 5 1 5 1 2 3
+[Pop ] 5 1 5 1 2 3
+[Pop ] 1 5 1 2 3
+[Pop ] 5 1 2 3
+[Pop ] 1 2 3
+[Pop ] 2 3
+[Pop ] 3
+[Pop ]
 
 Completed!
 test run complete...
-================================================= 
 */

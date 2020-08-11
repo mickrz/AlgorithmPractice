@@ -24,26 +24,39 @@ SOFTWARE.
 
 #include "Node.h"
 
-/* stack node */
-Node::Node(int input_data)
-{ 
-  data = input_data;
-  next = nullptr;
-}
+namespace NodeTypes {
+  /* stack node */
+  NextNode::NextNode(int input_data)
+  { 
+    data = input_data;
+    next = nullptr;
+  }
 
-/* I always spell these out because it's easier for me to follow. */
-int Node::GetData()
-{
-  return data;
-}
+  /* I always spell these out because it's easier for me to follow. */
+  int NextNode::GetData()
+  {
+    return data;
+  }
 
-void Node::SetNextNodePtr(Node* node)
-{
-  next = node;
-}
+  void NextNode::SetNextNodePtr(Node* node)
+  {
+    next = node;
+  }
 
-Node* Node::GetNextNodePtr()
-{
-  return next;
-}
+  NextNode* NextNode::GetNextNodePtr()
+  {
+    return next;
+  }
+  
+  std::ostream& operator<<(std::ostream & os, const NextNode & node)
+  {
+    NextNode* currentNode = node;
     
+    while (currentNode != nullptr) {
+      os << currentNode->GetData() << " ";
+      currentNode = currentNode->GetNextNodePtr();
+    }
+
+    return os;
+  }
+}    

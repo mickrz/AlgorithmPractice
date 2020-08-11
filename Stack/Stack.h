@@ -43,12 +43,13 @@ class Stack
     /* Returns top value */
     int Peek();
     
+    /* check if stack has any elements */
     bool IsEmpty();
 
-    /* I always spell these out because it's easier for me to follow. */
-    Node* GetTopPtr();
-    void SetTopPtr(Node* node);
-
   private:    
-    Node* top;
+    NextNode* top;
+    
+    /* I always spell these out because it's easier for me to follow. */
+    NextNode* GetTopPtr();
+    void SetTopPtr(NextNode* node);
 };

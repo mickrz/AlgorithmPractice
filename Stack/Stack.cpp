@@ -32,17 +32,19 @@ Stack::Stack()
 
 /* basic stack methods; Pushes next node onto stack */
 void Stack::Push(int input_data) {
-  Node* node = new Node(input_data);
-  node->SetNextNodePtr(GetTopPtr());    
+  NodeTypes::NextNode* node = new NodeTypes::NextNode(input_data);
+  node->SetNextNodePtr(GetTopPtr());
   SetTopPtr(node);
+  std::cout << *this << std::endl;
 }
 
 /* Pops next node */
 int Stack::Pop() {
   int value = GetTopPtr()->GetData();
-  Node* newTop = GetTopPtr()->GetNextNodePtr();
+  NodeTypes::NextNode* newTop = GetTopPtr()->GetNextNodePtr();
   delete GetTopPtr();
   SetTopPtr(newTop);
+  std::cout << *this << std::endl;
   return value;
 }
 
@@ -56,12 +58,12 @@ bool Stack::IsEmpty() {
 }
 
 /* I always spell these out because it's easier for me to follow. */
-Node* Stack::GetTopPtr()
+NodeTypes::NextNode* Stack::GetTopPtr()
 {
   return top;
 }
 
-void Stack::SetTopPtr(Node* node)
+void Stack::SetTopPtr(NodeTypes::NextNode* node)
 {
   top = node;
 }

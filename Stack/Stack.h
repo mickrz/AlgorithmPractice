@@ -26,6 +26,7 @@ SOFTWARE.
 
 #include "Node.h"
 
+template <typename T>
 /* stack class */
 class Stack
 {
@@ -35,13 +36,13 @@ class Stack
 
     /* basic stack methods;
        Pushes next node onto stack */
-    void Push(int input_data);
+    void Push(T const& input_data);
 
     /* Pops next node */
-    int Pop();
+    T Pop();
 
     /* Returns top value */
-    int Peek();
+    T Peek() const;
     
     /* check if stack has any elements */
     bool IsEmpty();
@@ -50,6 +51,6 @@ class Stack
     NodeTypes::NextNode* top;
     
     /* I always spell these out because it's easier for me to follow. */
-    NodeTypes::NextNode* GetTopPtr();
+    NodeTypes::NextNode* GetTopPtr() const;
     void SetTopPtr(NodeTypes::NextNode* node);
 };

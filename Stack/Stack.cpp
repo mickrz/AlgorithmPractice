@@ -25,13 +25,15 @@ SOFTWARE.
 #include "Stack.h"
 
 /* stack class */
-Stack::Stack()
+template <typename T>
+Stack<T>::Stack()
 {
   SetTopPtr(nullptr);
 }
 
 /* basic stack methods; Pushes next node onto stack */
-void Stack::Push(int input_data) {
+template <typename T>
+void Stack<T>::Push(T const& input_data) {
   NodeTypes::NextNode* node = new NodeTypes::NextNode(input_data);
   node->SetNextNodePtr(GetTopPtr());
   SetTopPtr(node);
@@ -39,8 +41,9 @@ void Stack::Push(int input_data) {
 }
 
 /* Pops next node */
-int Stack::Pop() {
-  int value = GetTopPtr()->GetData();
+template <typename T>
+T Stack<T>::Pop() {
+  T value = GetTopPtr()->GetData();
   NodeTypes::NextNode* newTop = GetTopPtr()->GetNextNodePtr();
   delete GetTopPtr();
   SetTopPtr(newTop);
@@ -49,21 +52,25 @@ int Stack::Pop() {
 }
 
 /* Returns top value */
-int Stack::Peek() {
+template <typename T>
+T Stack<T>::Peek() const {
   return (GetTopPtr() != nullptr) ? GetTopPtr()->GetData() : -1;
 }
 
-bool Stack::IsEmpty() {
+template <typename T>
+bool Stack<T>::IsEmpty() {
   return GetTopPtr() == nullptr;
 }
 
 /* I always spell these out because it's easier for me to follow. */
-NodeTypes::NextNode* Stack::GetTopPtr()
+template <typename T>
+NodeTypes::NextNode* Stack<T>::GetTopPtr() const
 {
   return top;
 }
 
-void Stack::SetTopPtr(NodeTypes::NextNode* node)
+template <typename T>
+void Stack<T>::SetTopPtr(NodeTypes::NextNode* node)
 {
   top = node;
 }

@@ -26,14 +26,13 @@ SOFTWARE.
 
 namespace NodeTypes {
   /* stack node */
-  NextNode::NextNode(int input_data)
-  { 
-    data = input_data;
-    next = nullptr;
+  NextNode::NextNode(int const& input_data) : data(input_data), next(nullptr)
+  {
+    // no additional initialization needed
   }
 
   /* I always spell these out because it's easier for me to follow. */
-  int NextNode::GetData()
+  int NextNode::GetData() const
   {
     return data;
   }
@@ -43,7 +42,7 @@ namespace NodeTypes {
     next = node;
   }
 
-  NextNode* NextNode::GetNextNodePtr()
+  NextNode* NextNode::GetNextNodePtr() const
   {
     return next;
   }

@@ -26,9 +26,9 @@ SOFTWARE.
 
 /* stack class */
 template <typename T>
-Stack<T>::Stack()
+Stack<T>::Stack() : top(nullptr)
 {
-  SetTopPtr(nullptr);
+  // No additional initialization needed
 }
 
 /* basic stack methods; Pushes next node onto stack */

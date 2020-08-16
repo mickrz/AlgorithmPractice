@@ -131,7 +131,7 @@ void Tree::DeleteNode(Node* root, int input_data)
   std::queue<Node*> q;
   Node* node = SearchNode(root, input_data);
   if (node != nullptr) {
-    q.push(root);
+    q.push(node);
     Node* temp = nullptr;
 
     while (!q.empty()) {
@@ -148,7 +148,7 @@ void Tree::DeleteNode(Node* root, int input_data)
     }
 
     int keyAtDeepestRight = temp->GetData();
-    SetExtremeRightToNull(root, temp);
+    SetExtremeRightToNull(node, temp);
     node->SetData(keyAtDeepestRight);
   }
 }

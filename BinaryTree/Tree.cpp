@@ -240,32 +240,46 @@ void Tree::BFS_DumpTree(Node* root, int height)
   std::cout << bfs_order.str() << std::endl;
 }
 
-int Tree::GetMaximumValue(Node* root, int current_max)
+int Tree::GetMaximumValue(Node* root)
 {
   if (root == nullptr) {
-    return current_max;
+    return -1;
   }
 
-  if (root->GetData() > current_max) {
-    current_max = root->GetData();
+  int max_val = root->GetData();
+  int left_val = GetMaximumValue(root->GetLeftNodePtr());
+  int right_val = GetMaximumValue(root->GetRightNodePtr());
+
+  if (left_val > max_val) {
+    max_val = left_val;
   }
 
-  GetMaximumValue(root->GetLeftNodePtr(), current_max);
-  GetMaximumValue(root->GetRightNodePtr(), current_max);      
+  if (right_val > max_val) {
+    max_val = right_val;
+  }
+
+  return max_val;
 }
 
-int Tree::GetMinimumValue(Node* root, int current_min)
+int Tree::GetMinimumValue(Node* root)
 {
   if (root == nullptr) {
-    return current_min;
+    return std::numeric_limits<int>::max();
   }
 
-  if (root->GetData() < current_min) {
-    current_min = root->GetData();
+  int min_val = root->GetData();
+  int left_val = GetMinimumValue(root->GetLeftNodePtr());
+  int right_val = GetMinimumValue(root->GetRightNodePtr());
+
+  if (left_val < min_val) {
+    min_val = left_val;
   }
 
-  GetMinimumValue(root->GetLeftNodePtr(), current_min);
-  GetMinimumValue(root->GetRightNodePtr(), current_min);      
+  if (right_val < min_val) {
+    min_val = right_val;
+  }
+
+  return min_val;
 }
 
 int Tree::GetHeight(Node* root)

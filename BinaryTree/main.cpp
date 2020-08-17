@@ -128,10 +128,10 @@ int main()
   tree->BFS_DumpTree(root, 3);
   
   std::cout << "Find the maximum value in tree..." << std::endl;
-  std::cout << tree->GetMaximumValue(root, root->GetData()) << std::endl;
+  std::cout << tree->GetMaximumValue(root) << std::endl;
 
   std::cout << "Find the minimum value in tree..." << std::endl;
-  std::cout << tree->GetMinimumValue(root, root->GetData()) << std::endl;
+  std::cout << tree->GetMinimumValue(root) << std::endl;
 
   std::cout << "Find the height of tree..." << std::endl;
   std::cout << tree->GetHeight(root) << std::endl;

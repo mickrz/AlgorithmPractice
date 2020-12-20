@@ -25,6 +25,7 @@ SOFTWARE.
 #pragma once
 
 #include "Node.h"
+#include <limits>
 
 /* tree class */
 class Tree
@@ -59,9 +60,9 @@ class Tree
 
     void BFS_DumpTree(Node* root, int height);
 
-    int GetMaximumValue(Node* root, int current_max);
+    int GetMaximumValue(Node* root);
 
-    int GetMinimumValue(Node* root, int current_min);
+    int GetMinimumValue(Node* root);
 
     int GetHeight(Node* root);
 

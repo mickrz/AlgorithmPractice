@@ -62,29 +62,29 @@ int main()
   node = tree->SearchNode(root, 8);
   tree->DumpNodeInfo(node);
 
-  std::cout << "\nDelete a node and print new tree layout" << std::endl;
-  tree->DeleteNode(root, 3);
+  std::cout << "\nDelete node value 2 and print new tree layout" << std::endl;
+  tree->DeleteNode(root, 2);
   
   /*       1
          /   \
-        2     7
+        5     3
        / \   / \
-      4   5 6  -
+      4   - 6   7
   */      
   std::cout << "\n       1"
             << "\n     /   \\"
-            << "\n    2     7"
+            << "\n    5     3"
             << "\n   / \\   / \\"
-            << "\n  4   5 6   -\n";
+            << "\n  4   - 6   7\n";
 
   
   node = tree->SearchNode(root, 1);
   tree->DumpNodeInfo(node);
 
-  node = tree->SearchNode(root, 2);
+  node = tree->SearchNode(root, 5);
   tree->DumpNodeInfo(node);
 
-  node = tree->SearchNode(root, 7);
+  node = tree->SearchNode(root, 3);
   tree->DumpNodeInfo(node);
 
   std::cout << "\nInsert a new mode to bring it back to its former glory..." << std::endl;
@@ -98,18 +98,18 @@ int main()
   */      
   std::cout << "\n       1"
             << "\n     /   \\"
-            << "\n    2     7"
+            << "\n    5     3"
             << "\n   / \\   / \\"
-            << "\n  4   5 6   8\n";
+            << "\n  4   8 6   7\n";
 
   
   node = tree->SearchNode(root, 1);
   tree->DumpNodeInfo(node);
 
-  node = tree->SearchNode(root, 2);
+  node = tree->SearchNode(root, 5);
   tree->DumpNodeInfo(node);
 
-  node = tree->SearchNode(root, 7);
+  node = tree->SearchNode(root, 3);
   tree->DumpNodeInfo(node);
 
   std::cout << "\nDFT Pre-order traversal..." << std::endl;
@@ -128,10 +128,10 @@ int main()
   tree->BFS_DumpTree(root, 3);
   
   std::cout << "Find the maximum value in tree..." << std::endl;
-  std::cout << tree->GetMaximumValue(root, root->GetData()) << std::endl;
+  std::cout << tree->GetMaximumValue(root) << std::endl;
 
   std::cout << "Find the minimum value in tree..." << std::endl;
-  std::cout << tree->GetMinimumValue(root, root->GetData()) << std::endl;
+  std::cout << tree->GetMinimumValue(root) << std::endl;
 
   std::cout << "Find the height of tree..." << std::endl;
   std::cout << tree->GetHeight(root) << std::endl;

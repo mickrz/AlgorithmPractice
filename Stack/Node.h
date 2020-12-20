@@ -29,23 +29,45 @@ SOFTWARE.
 #include <sstream>
 
 namespace NodeTypes {
+  template <typename T>
   /* stack node */
   class NextNode
   {
     public:
-      NextNode(int input_data);
+      NextNode(T const& input_data) : data(input_data), next(nullptr) {};
       virtual ~NextNode() = default;
       
       /* I always spell these out because it's easier for me to follow. */
-      int GetData();
-      void SetNextNodePtr(NextNode* node);
-      NextNode* GetNextNodePtr();
+      T GetData() const
+      {
+        return data;
+      };
+
+      void SetNextNodePtr(NextNode* node)
+      {
+        next = node;
+      };
+            
+      NextNode* GetNextNodePtr() const
+      {
+        return next;
+      };
       
       // An overloaded operator<<, allowing us to print the node via `cout<<`:
-      friend std::ostream& operator<<(std::ostream& os, NextNode* node);
-      
+      template <typename U>
+      friend std::ostream& operator<<(std::ostream& os, NextNode<U>* node)
+      {
+        NextNode<U>* currentNode = node;
+
+        while (currentNode != nullptr) {
+          os << currentNode->GetData() << " ";
+          currentNode = currentNode->GetNextNodePtr();
+        }
+        return os;;
+      }
+
     private:
-      int data;
+      T data;
       NextNode* next;
   };
 }

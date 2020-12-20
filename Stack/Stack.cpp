@@ -26,15 +26,15 @@ SOFTWARE.
 
 /* stack class */
 template <typename T>
-Stack<T>::Stack()
+Stack<T>::Stack() : top(nullptr)
 {
-  SetTopPtr(nullptr);
+  // No additional initialization needed
 }
 
 /* basic stack methods; Pushes next node onto stack */
 template <typename T>
 void Stack<T>::Push(T const& input_data) {
-  NodeTypes::NextNode* node = new NodeTypes::NextNode(input_data);
+  NodeTypes::NextNode<T>* node = new NodeTypes::NextNode<T>(input_data);
   node->SetNextNodePtr(GetTopPtr());
   SetTopPtr(node);
   std::cout << "[Push] " << top << std::endl;
@@ -44,7 +44,7 @@ void Stack<T>::Push(T const& input_data) {
 template <typename T>
 T Stack<T>::Pop() {
   T value = GetTopPtr()->GetData();
-  NodeTypes::NextNode* newTop = GetTopPtr()->GetNextNodePtr();
+  NodeTypes::NextNode<T>* newTop = GetTopPtr()->GetNextNodePtr();
   delete GetTopPtr();
   SetTopPtr(newTop);
   std::cout << "[Pop ] " << top << std::endl;
@@ -64,13 +64,13 @@ bool Stack<T>::IsEmpty() {
 
 /* I always spell these out because it's easier for me to follow. */
 template <typename T>
-NodeTypes::NextNode* Stack<T>::GetTopPtr() const
+NodeTypes::NextNode<T>* Stack<T>::GetTopPtr() const
 {
   return top;
 }
 
 template <typename T>
-void Stack<T>::SetTopPtr(NodeTypes::NextNode* node)
+void Stack<T>::SetTopPtr(NodeTypes::NextNode<T>* node)
 {
   top = node;
 }

@@ -23,18 +23,21 @@ SOFTWARE.
 */
 
 #pragma once
+#include <iostream>
+#include <random>
+#include <sstream>
 
 /* mergesort class */
 class MergeSort
 {
   public:
-    MergeSort();
+    MergeSort(int[], int);
     virtual ~MergeSort() = default;
 
     /* basic queue methods;
     Pushes next node onto queue */
-    void Merge(int input_data);
+    void Merge(int input_arry[], int left, int mid, int right);
 
     /* Pops first node */
-    int Sort();
+    void Sort(int input_arry[], int left, int right);
 };

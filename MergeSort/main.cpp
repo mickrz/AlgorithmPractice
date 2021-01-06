@@ -24,7 +24,7 @@ SOFTWARE.
 
 #include "MergeSort.h"
 
-MergeSort* InitializeMergeSort(int size)
+int* InitializeMergeSort(int size)
 {
   // Reference: https://en.cppreference.com/w/cpp/numeric/random/uniform_int_distribution
   // Code to generate random values for nodes from 1 to 5.
@@ -32,27 +32,23 @@ MergeSort* InitializeMergeSort(int size)
   std::mt19937 gen(rd()); //Standard mersenne_twister_engine seeded with rd()
   std::uniform_int_distribution<> dis(1, 50);
   
-  MergeSort* mergeSort = new MergeSort();
   int random_num = 0;
-  std::stringstream mergeSort_data;
-  
+  int* mergeArry = new int[size]; 
+
   std::cout << "Initializing mergeSort:" << std::endl;
   for (int i = 0; i < size; i++) {
     random_num = dis(gen);
-    mergeSort_data << "Node " << std::to_string(i+1) << " is first in mergeSort " << std::to_string(random_num) << "\n";
+   std::cout << i << ": " << random_num << std::endl;
+    mergeArry[i] = random_num;
   }
-  std::cout << mergeSort_data.str() << "\nmergeSort has " <<  std::to_string(size) \
-    << " element(s)" <<  std::endl;
-  return mergeSort;
+  return mergeArry;
 }
 
-void Cleanup(MergeSort* mergeSort)
+void Cleanup(int* mergeArry)
 {
   std::cout << "Cleaning up memory..." << std::endl;
-  std::stringstream mergeSort_data;
 
-  std::cout << mergeSort_data.str() << std::endl;
-  delete mergeSort;
+  delete[] mergeArry;
   std::cout << "Completed!" << std::endl;
 }
 
@@ -61,8 +57,10 @@ int main()
   std::cout << "Hello MergeSorts!" << std::endl;
   std::cout << "=================================================" << std::endl;
   std::cout << "test run started..." << std::endl; 
-  MergeSort* mergeSort_one = InitializeMergeSort(10);
+  int* mergeSort_one = InitializeMergeSort(4);
   std::cout << "=================================================" << std::endl;
+  MergeSort mergeSort(mergeSort_one, 4);
+  //std::cout << mergeSort(mergeSort_one, 4);
   Cleanup(mergeSort_one);
   std::cout << "test run complete...\n" << std::endl; 
   std::cout << "=================================================" << std::endl;

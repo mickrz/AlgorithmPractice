@@ -26,46 +26,69 @@ SOFTWARE.
 #include "MergeSort.h"
 
 /* mergesort class */
-MergeSort::MergeSort(int* input_arry, int size)
+MergeSort::MergeSort(int input_arry[], int size)
 {
   Sort(input_arry, 0, size - 1);
+  std::cout << "----" << std::endl;
+  for (int i = 0; i < size; i++) {
+    std::cout << input_arry[i] << std::endl;
+  }
+  std::cout << "----" << std::endl;
 }
 
 /* basic mergesort methods; */
-void MergeSort::Merge(int* input_arry, int left_low, int left_high, int right_low, int right_high)
+void MergeSort::Merge(int input_arry[], int left, int mid, int right)
 {
-  int length = right_high - left_low + 1;
-  int temp[length];
-  int left_side = left_low;
-  int right_side = right_low;
-  for (int i = 0; i < length; ++i) {
-    if (left > left_high) {
-      temp[i] = input_arry[right++];
-    }
-    else if (right > right_high) {
-      temp[i] = input_arry[left++];
-    }
-    else if (input_arry[left] <= input_arry[right]) {
-      temp[i] = input_arry[left++];
+  int i, j, k;
+  int left_size = mid - left + 1, right_size = right - mid;
+  int* left_arry = new int[left_size], *right_arry = new int[right_size];
+
+  for (i = 0; i < left_size; i++) {
+    left_arry[i] = input_arry[left + i];
+    std::cout << "i: " << left_arry[i] << std::endl;
+  }
+  for (j = 0; j < right_size; j++) {
+    right_arry[j] = input_arry[mid + 1 + j];
+    std::cout << "j: " << right_arry[j] << std::endl;
+  }
+
+  i = 0, j = 0, k = 1;
+
+  while (i < left_size && j < right_size) {
+    if (left_arry[i] <= right_arry[j]) {
+      input_arry[k] = left_arry[i];
+      i++;
     }
     else {
-      temp[i] input_arry[right++];
+      input_arry[k] = right_arry[j];
+      j++;
     }
-    
-    for (int i = 0; i < length; ++i) {
-      input_arry[left_low] = temp[i];
-    }
+    k++;
+  }
+
+  while (i < left_size) {
+    input_arry[k] = left_arry[i];
+    i++;
+    k++;
+  }
+  while (j < right_size) {
+    input_arry[k] = right_arry[j];
+    j++;
+    k++;
+  } 
+
+  delete[] left_arry;
+  delete[] right_arry;
 }
 
-/* */
-int MergeSort::Sort(int* input_arry, int left, int right)
+void MergeSort::Sort(int input_arry[], int left, int right)
 {
-  if (left >= right) {
+  if (left == right) {
     return;
-  } else {
-    int mid = (left + right) / 2;
-    Sort(input_arry, left, mid);
-    Sort(input_arry, mid+1, right);
-    Merge(input_arry, left, mid, mid+1, right);
   }
+  
+  int mid = (right + left) / 2;
+  Sort(input_arry, left, mid);
+  Sort(input_arry, mid+1, right);
+  Merge(input_arry, left, mid, right);
 }

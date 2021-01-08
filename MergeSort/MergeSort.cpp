@@ -29,11 +29,9 @@ SOFTWARE.
 MergeSort::MergeSort(int input_arry[], int size)
 {
   Sort(input_arry, 0, size - 1);
-  std::cout << "----" << std::endl;
   for (int i = 0; i < size; i++) {
-    std::cout << input_arry[i] << std::endl;
+    std::cout << i << ": " << input_arry[i] << std::endl;
   }
-  std::cout << "----" << std::endl;
 }
 
 /* basic mergesort methods; */
@@ -41,40 +39,32 @@ void MergeSort::Merge(int input_arry[], int left, int mid, int right)
 {
   int i, j, k;
   int left_size = mid - left + 1, right_size = right - mid;
-  int* left_arry = new int[left_size], *right_arry = new int[right_size];
+  int *left_arry = new int[left_size], *right_arry = new int[right_size];
 
   for (i = 0; i < left_size; i++) {
     left_arry[i] = input_arry[left + i];
-    std::cout << "i: " << left_arry[i] << std::endl;
   }
+  
   for (j = 0; j < right_size; j++) {
     right_arry[j] = input_arry[mid + 1 + j];
-    std::cout << "j: " << right_arry[j] << std::endl;
   }
 
-  i = 0, j = 0, k = 1;
+  i = 0, j = 0, k = left;
 
   while (i < left_size && j < right_size) {
     if (left_arry[i] <= right_arry[j]) {
-      input_arry[k] = left_arry[i];
-      i++;
+      input_arry[k++] = left_arry[i++];
     }
     else {
-      input_arry[k] = right_arry[j];
-      j++;
+      input_arry[k++] = right_arry[j++];
     }
-    k++;
   }
 
   while (i < left_size) {
-    input_arry[k] = left_arry[i];
-    i++;
-    k++;
+    input_arry[k++] = left_arry[i++];
   }
   while (j < right_size) {
-    input_arry[k] = right_arry[j];
-    j++;
-    k++;
+    input_arry[k++] = right_arry[j++];
   } 
 
   delete[] left_arry;
@@ -83,12 +73,12 @@ void MergeSort::Merge(int input_arry[], int left, int mid, int right)
 
 void MergeSort::Sort(int input_arry[], int left, int right)
 {
-  if (left == right) {
+  if (left >= right) {
     return;
   }
   
-  int mid = (right + left) / 2;
+  int mid = (right + left - 1) / 2;
   Sort(input_arry, left, mid);
-  Sort(input_arry, mid+1, right);
+  Sort(input_arry, mid + 1, right);
   Merge(input_arry, left, mid, right);
 }

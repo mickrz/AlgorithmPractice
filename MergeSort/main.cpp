@@ -24,6 +24,8 @@ SOFTWARE.
 
 #include "MergeSort.h"
 
+const int ARRAY_SIZE = 10;
+
 int* InitializeMergeSort(int size)
 {
   // Reference: https://en.cppreference.com/w/cpp/numeric/random/uniform_int_distribution
@@ -33,7 +35,7 @@ int* InitializeMergeSort(int size)
   std::uniform_int_distribution<> dis(1, 50);
   
   int random_num = 0;
-  int* mergeArry = new int[size]; 
+  int* mergeArry = new int[ARRAY_SIZE]; 
 
   std::cout << "Initializing mergeSort:" << std::endl;
   for (int i = 0; i < size; i++) {
@@ -57,10 +59,10 @@ int main()
   std::cout << "Hello MergeSorts!" << std::endl;
   std::cout << "=================================================" << std::endl;
   std::cout << "test run started..." << std::endl; 
-  int* mergeSort_one = InitializeMergeSort(4);
+  int* mergeSort_one = InitializeMergeSort(ARRAY_SIZE);
   std::cout << "=================================================" << std::endl;
-  MergeSort mergeSort(mergeSort_one, 4);
-  //std::cout << mergeSort(mergeSort_one, 4);
+  MergeSort mergeSort(mergeSort_one, ARRAY_SIZE);
+  //std::cout << mergeSort(mergeSort_one, ARRAY_SIZE);
   Cleanup(mergeSort_one);
   std::cout << "test run complete...\n" << std::endl; 
   std::cout << "=================================================" << std::endl;
@@ -72,30 +74,8 @@ Hello MergeSorts!
 =================================================
 test run started...
 Initializing mergeSort:
-Node 1 is first in mergeSort 4
-Node 2 is first in mergeSort 5
-Node 3 is first in mergeSort 1
-Node 4 is first in mergeSort 3
-Node 5 is first in mergeSort 1
-Node 6 is first in mergeSort 2
-Node 7 is first in mergeSort 4
-Node 8 is first in mergeSort 4
-Node 9 is first in mergeSort 1
-Node 10 is first in mergeSort 2
-
-mergeSort has 10 element(s)
 =================================================
 Cleaning up memory...
-Node removed from first in mergeSort 4
-Node removed from first in mergeSort 5
-Node removed from first in mergeSort 1
-Node removed from first in mergeSort 3
-Node removed from first in mergeSort 1
-Node removed from first in mergeSort 2
-Node removed from first in mergeSort 4
-Node removed from first in mergeSort 4
-Node removed from first in mergeSort 1
-Node removed from first in mergeSort 2
 
 Completed!
 test run complete...  

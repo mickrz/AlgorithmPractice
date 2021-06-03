@@ -1,10 +1,10 @@
-# General Data Structure and Algorithm "Stuff"
+# Coding examples
 
 ## My practice implementations
-I started out doing a handful of problems, but I thought it was more interesting creating my own implementations of the classic data structures and algorithms.
+I started out doing a handful of problems from CtCIv6, but I thought it was more interesting creating my own implementations of the classic data structures and algorithms as well as other coding examples in C++ 11/14/17.
 
 
-The following data structures are meant to be self-contained. At some point, I intend to use C++ templates to use any data type.
+The following data structures & algorithms are meant to be self-contained.
 
 Data Structure | Description | filename/directory
 --- | --- | ---
@@ -13,6 +13,19 @@ Stack | as advertised | Stack
 Queue | as advertised | Queue
 Tree | Using tree and node classes, some viewpoints is it rarely makes a difference, but coding it up this way I thought made it more manageable. Tree class contains min/max/height/number of nodes, leafs. Includes pre-order/in-order/post-order & BFS recursively | Tree
 Binary Search Tree | as advertised | BST
+
+Algorithm | Description | filename/directory
+--- | --- | ---
+Merge Sort | as advertised | MergeSort
+
+
+Also, I find myself looking for a simple barebones working code example to illustrate a concept and be able to run it to understand it - so I started creating my own references.
+
+Example | Description | filename/directory
+--- | --- | ---
+Callback | Example across classes using std::shared_ptr, std::move, static, std::optional, std::mutex, std::function, etc | Callback
+
+
 
 
 ## My practice solutions for "Cracking the Coding Interview", 6th ed.

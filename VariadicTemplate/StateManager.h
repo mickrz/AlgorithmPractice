@@ -24,14 +24,19 @@ public:
 
 class StateManager {
 public:
-  /*
-    // Function that accepts no parameter
-    // It breaks the variadic template function chain
-    void UpdateState() {}
+  
+  // Function that accepts no parameter
+  // It breaks the variadic template function chain
+  void UpdateState() {}
     
-    template<typename T, typename ... Args>
-    void UpdateState(T first, Args ... args) {}
-  */
+  template<typename T, typename ... Args>
+  void UpdateState(T first, Args ... args) {
+      std::cout << __FUNCTION__ << ": ln" << __LINE__ << std::endl;
+      std::cout << "UpdateState: " << std::to_string(first) << std::endl;
+      // Forward arguments
+      UpdateState(first, std::forward<Args>(args) ...);
+  }
+  
   
   void UpdateState(State state, int val) {
     std::cout << __FUNCTION__ << ": ln" << __LINE__ << std::endl;
@@ -51,7 +56,7 @@ public:
   /* Variadic Template Function that accepts variable number of arguments of any type */
   template<typename T, typename ... Args>
   void ProcessStateChange(T first, Args ... args) {
-    std::cout << __FUNCTION__ << std::endl;
+    std::cout << __FUNCTION__ << ": ln" << __LINE__ << std::endl;
     // Forward arguments
     UpdateState(first, std::forward<Args>(args) ...);
   }

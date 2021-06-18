@@ -37,12 +37,17 @@ TestApp is the driver and StateManager is the class containing the variadic temp
 # Sample output
 This output shows the function and line number to display which UpdateState is called. This is more practical than many examples I've seen which show what looks like the parameters are going through a recursion. This is not the case, but actually the methods are generated at compile time and used with the remaining parameters. In this example, specific functions are added to execute logic - dumping the values passed in.
 
-```StateManager::ProcessStateChange
-StateManager::UpdateState: ln37
+```
+StateManager::ProcessStateChange: ln57
+StateManager::UpdateState: ln40
 UpdateState: Paused: 4
-StateManager::ProcessStateChange
-StateManager::UpdateState: ln42
+StateManager::ProcessStateChange: ln57
+StateManager::UpdateState: ln45
 UpdateState: Running: eating cookies
-StateManager::ProcessStateChange
-StateManager::UpdateState: ln47
-UpdateState: Error: tummy ache, error code: 65535```
+StateManager::ProcessStateChange: ln57
+StateManager::UpdateState: ln50
+UpdateState: Error: tummy ache, error code: 65535
+StateManager::ProcessStateChange: ln57
+StateManager::UpdateState: ln34
+UpdateState: 6
+```

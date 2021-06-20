@@ -19,12 +19,13 @@ Algorithm | Description | filename/directory
 Merge Sort | as advertised | MergeSort
 
 
-Also, I find myself looking for a simple barebones working code example to illustrate a concept and be able to run it to understand it - so I started creating my own references.
+Also, I find myself looking for a simple working code example to illustrate a concept and be able to run it to understand it - so I started creating my own references.
 
 Example | Description | filename/directory
 --- | --- | ---
 Callback | Example across classes using std::shared_ptr, std::move, static, std::optional, std::mutex, std::function, etc | Callback
-
+Variadic Template | Simple demo of uses for variadic templates | VariadicTemplate
+Factory | Simple demo of Factory Method (Abstract Creator Class) - This will be the basis of a mini-project that will tie many different patterns, concepts and packages | FactoryExample
 
 
 

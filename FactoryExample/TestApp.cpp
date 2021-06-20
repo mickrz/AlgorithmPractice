@@ -5,7 +5,7 @@
 
 int main()
 {
-	BaseBoardFactory* baseBoardFactory = new BaseBoardFactory;
+	std::unique_ptr<BaseBoardFactory> baseBoardFactory = std::make_unique<BaseBoardFactory>();
 	BaseBoard* baseBoard;
 
 	baseBoard = baseBoardFactory->createBoard("Arduino");
